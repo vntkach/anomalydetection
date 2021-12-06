@@ -55,7 +55,6 @@ def anomalydetection(timeseries):
         if lastNaverage(deltas, N) == 0:
             anomaly.append(0)
             deltasAveraged.append(0)
-            print(lastNaverage(deltas, N))
             logDeltasNormalized.append(0)
         else:
             deltasAveraged.append(logistic(4, delta / lastNaverage(deltas, N), 2.5))
@@ -68,7 +67,7 @@ def anomalydetection(timeseries):
             logDeltasNormalized.append(logDeltaNormalized)
             anomaly.append(likelihood)
 
-        predicted = 0.4 * timeseries[point] + 0.6 * predicted
+        predicted = 0.8 * timeseries[point] + 0.2 * predicted
 
     return anomaly, deltas, deltasAveraged, logDeltasNormalized, predictions
 
@@ -80,7 +79,7 @@ def get_anomaly(timeseries, name):
 
     anomaly, deltas, deltasAveraged, logDeltasNormalized, predictions = anomalydetection(timeseries)
 
-    threshold = 0.9
+    threshold = 0.8
     adots = []
     xdots = []
 
@@ -119,7 +118,7 @@ def get_anomaly(timeseries, name):
     sp3.plot(timerange, anomaly, '-', color="silver")
     sp3.plot(timerange, adots, 'r.')
 
-    plt.savefig(name + '.png', dpi=1200)
+    # plt.savefig(name + '.png', dpi=1200)
     plt.show()
 
 
@@ -323,8 +322,9 @@ if __name__ == '__main__':
 
     # data = pd.read_csv('input.csv')
 
-    get_anomaly(timeseries1, 'Figure 3')
+    # get_anomaly(timeseries1, 'Figure 3')
     get_anomaly(timeseries2, 'Figure 2')
+    get_anomaly(timeseries2[:100], 'Figure 2')
     get_anomaly(timeseries3, 'Figure 4')
     # get_anomaly(timeseries3[0:580], '3')
     # get_anomaly(timeseries4, '4')
