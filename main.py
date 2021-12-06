@@ -119,7 +119,7 @@ def get_anomaly(timeseries, name):
     sp3.plot(timerange, anomaly, '-', color="silver")
     sp3.plot(timerange, adots, 'r.')
 
-    # plt.savefig('test-' + name + '.png', dpi=1200)
+    plt.savefig(name + '.png', dpi=1200)
     plt.show()
 
 
@@ -323,16 +323,16 @@ if __name__ == '__main__':
 
     # data = pd.read_csv('input.csv')
 
-    get_anomaly(timeseries1, '1')
-    # get_anomaly(timeseries2, '2')
-    # get_anomaly(timeseries3, '3')
+    get_anomaly(timeseries1, 'Figure 3')
+    get_anomaly(timeseries2, 'Figure 2')
+    get_anomaly(timeseries3, 'Figure 4')
     # get_anomaly(timeseries3[0:580], '3')
     # get_anomaly(timeseries4, '4')
     # get_anomaly(timeseries5, '5')
     # get_anomaly(timeseries6, '6')
-    # get_anomaly(timeseries7, '7')
-    # get_anomaly(timeseries7[:150], '7')
-    # get_anomaly(timeseries8, '8')
+    get_anomaly(timeseries7, 'Figure 5a')
+    get_anomaly(timeseries7[:150], 'Figure 5b')
+    get_anomaly(timeseries8, 'Figure 6')
     # get_anomaly(timeseries9, '9')
     # get_anomaly(timeseries10, 'Artificial no Anomaly')
     # get_anomaly(timeseries11, 'Artificial no Anomaly Noised')
